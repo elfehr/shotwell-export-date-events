@@ -5,6 +5,7 @@ import sqlite3
 import os
 import sys
 import getopt
+from datetime import datetime
 from subprocess import Popen, PIPE
 from hashlib import sha1
 
@@ -85,12 +86,14 @@ def main():
 
             print "======================"
             print "Dealing with Event", row[1]
-
-            event_dir = dest + os.sep + row[1].replace(os.sep, "_") #in case of seps in the string
+            timestamp_crs = conn.cursor()
+            timestamp_crs.execute('select exposure_time from PhotoTable where event_id=? order by timestamp limit 1', (row[0],))
+            event_ym = datetime.fromtimestamp(timestamp_crs.fetchall()[0][0]).strftime("%Y-%m")
+            print "Identified event date", event_ym
+            event_dir = dest + os.sep + event_ym + '_' + row[1].replace(os.sep, "_") #in case of seps in the string
             if not os.path.exists(event_dir):
                 print "Creating", event_dir
                 os.makedirs(event_dir)
-
             photo_crs = conn.cursor()
             photo_crs.execute('select filename from PhotoTable where event_id=?', (row[0],))
             copy_cnt = 0

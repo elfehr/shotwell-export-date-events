@@ -1,11 +1,20 @@
-This probably goes against what shotwell want me to do, but it annoys me I can't
-rearrange my date ordered photos on the filesystem to be by event. Where it annoys 
-me most is when I want to show my photos on the xbox and then have to browse via file
-system. This is a hack that will **COPY** the photos to another directory (on my
-windows machine in my case) that is sorted as EVENT_NAME/photos.
+I want to re-organize my personal photo	 collection to be ordered by
+eventy, with the (approximate) monthly date added to the directory
+name:
+    2020-12_Christmas
+    2021-01_Birthday
+    2021-01_NewYear
+    ...
 
-It also rotates them automatically using exiftran.
+I use [Shotwell](https://wiki.gnome.org/Apps/Shotwell) to organize the
+pho1tos itself, then use this script to copy the then sorted files to a
+output directory with the desired subdirectory structure.
+
+The script is forked from a [similar script](https://github.com/steprobe/Shotwell-Export-To-Events) by [Stephen Rogers](https://github.com/steprobe),
+with the only addition that I added integration for the monthly string
+in my version. All credits for the idea and implementaiton go to him,
+obviously. 
 
 Example:
-    sw_export_to_event.py -i ~/.shotwell/data/photo.db -d /mnt/windows/Users/stephen/Pictures/ -r
+    sw_export_to_event.py -i ~/.local/share/shotwelll/data/photo.db -d <output_directory>
 
