@@ -1,6 +1,6 @@
-# Export files from Shotwell DB to folders named <YYYY>-<MM>_<EVENT>
+# Export files from Shotwell DB to folders named \<YYYY\>-\<MM\>_\<EVENT\>
 
-I want to re-organize my personal photo	collection to be ordered by
+I want to re-organize my personal photo collection to be ordered by
 events, with the (approximate) monthly date added to the directory
 name:
 
@@ -15,9 +15,9 @@ sorted files to a output directory with the desired subdirectory
 structure.
 
 The script is forked from a [similar script](https://github.com/steprobe/Shotwell-Export-To-Events) by [Stephen Rogers](https://github.com/steprobe),
-with the only addition that I added integration for the monthly string
-in my version. All credits for the idea and implementaiton go to him,
-obviously.
+with the only additions that I added integration for the monthly string
+in the target directory name, and handling of developed RAW files to my version.
+All credits for the idea and implementation go to the original author, obviously.
 
 Example:
 

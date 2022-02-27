@@ -1,0 +1,30 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "launch":{
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Python: sw_export_to_event.py",
+                "type": "python",
+                "request": "launch",
+                "program": "${file}",
+                "args": ["-i", "~/.local/share/shotwell/data/photo.db", "-d", "~/Bilder/sorted/"],
+                "console": "integratedTerminal"
+            }
+        ]
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-python.python",
+            "davidanson.vscode-markdownlint",
+            "yzhang.markdown-all-in-one"
+        ]
+    },
+    "settings": {
+        "latex-workshop.latex.autoBuild.run": "never"
+    }
+}
