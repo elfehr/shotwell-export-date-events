@@ -99,7 +99,7 @@ def main():
                 """
                 SELECT exposure_time
                 FROM PhotoTable
-                WHERE event_id=?
+                WHERE event_id=? AND exposure_time IS NOT NULL
                 ORDER BY exposure_time LIMIT 1
                 """,
                 (row[0],),
