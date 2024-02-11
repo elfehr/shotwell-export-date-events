@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
+import getopt
+import os
 import shutil
 import sqlite3
-import os
 import sys
-import getopt
 from datetime import datetime
-from subprocess import Popen, PIPE
 from hashlib import sha1
+from subprocess import PIPE, Popen
 
 input_db = None
 dest = None
@@ -78,7 +78,6 @@ def shafile(filename):
 
 
 def main():
-
     parse_args()
 
     print("Going to output to", dest)
@@ -91,7 +90,6 @@ def main():
     crs.execute("SELECT id, name FROM EventTable")
     for row in crs:
         if row[1] is not None:
-
             print("======================")
             print(f"Dealing with event '{row[1]}'")
             timestamp_crs = conn.cursor()
@@ -100,9 +98,16 @@ def main():
                 SELECT exposure_time
                 FROM PhotoTable
                 WHERE event_id=? AND exposure_time IS NOT NULL
-                ORDER BY exposure_time LIMIT 1
+                UNION
+                SELECT exposure_time
+                FROM VideoTable
+                WHERE event_id=? AND exposure_time IS NOT NULL
+                ORDER BY exposure_time LIMIT 13
                 """,
-                (row[0],),
+                (
+                    row[0],
+                    row[0],
+                ),
             )
             try:
                 event_ym = datetime.fromtimestamp(
@@ -126,8 +131,15 @@ def main():
                 LEFT OUTER JOIN BackingPhotoTable
                 ON BackingPhotoTable.id = PhotoTable.develop_camera_id
                 WHERE event_id=?
+                UNION
+                SELECT filename, NULL AS jpg_filename
+                FROM VideoTable
+                WHERE event_id=?
                 """,
-                (row[0],),
+                (
+                    row[0],
+                    row[0],
+                ),
             )
             copy_cnt = 0
             exist_cnt = 0
