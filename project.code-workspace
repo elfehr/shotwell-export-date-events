@@ -1,47 +1,46 @@
 {
-  "folders": [
-    {
-      "path": "."
-    }
-  ],
-  "launch": {
-    "version": "0.2.0",
-    "configurations": [
-      {
-        "name": "Python: sw_export_to_event.py",
-        "type": "python",
-        "request": "launch",
-        "program": "${file}",
-        "args": [
-          "-i",
-          "~/.local/share/shotwell/data/photo.db",
-          "-d",
-          "~/Bilder/sorted/"
-        ],
-        "console": "integratedTerminal"
-      }
-    ]
-  },
-  "extensions": {
-    "recommendations": [
-      "ms-python.python",
-      "njpwerner.autodocstring",
-      "davidanson.vscode-markdownlint",
-      "charliermarsh.ruff"
-    ]
-  },
-  "settings": {
-    "ruff.enableExperimentalFormatter": true,
-    "[python]": {
-      "editor.formatOnSave": true,
-      "editor.codeActionsOnSave": {
-        "source.fixAll": "explicit",
-        "source.organizeImports.ruff": "explicit"
-      },
-      "editor.defaultFormatter": "charliermarsh.ruff"
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Python: sw_export_to_event.py",
+                "type": "python",
+                "request": "launch",
+                "program": "${file}",
+                "args": [
+                    "-i",
+                    "~/.local/share/shotwell/data/photo.db",
+                    "-d",
+                    "~/Bilder/sorted"
+                ],
+                "console": "integratedTerminal"
+            }
+        ]
     },
-    "python.testing.pytestArgs": ["tests"],
-    "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
-  }
+    "extensions": {
+        "recommendations": [
+            "ms-python.python",
+            "njpwerner.autodocstring",
+            "davidanson.vscode-markdownlint",
+            "charliermarsh.ruff"
+        ]
+    },
+    "settings": {
+        "[python]": {
+            "editor.formatOnSave": true,
+            "editor.codeActionsOnSave": {
+                "source.fixAll": "explicit",
+                "source.organizeImports.ruff": "explicit"
+            },
+            "editor.defaultFormatter": "charliermarsh.ruff"
+        },
+        "python.testing.pytestArgs": ["tests"],
+        "python.testing.unittestEnabled": false,
+        "python.testing.pytestEnabled": true
+    }
 }
