@@ -126,10 +126,10 @@ def main():
             photo_crs = conn.cursor()
             photo_crs.execute(
                 """
-                SELECT filename, BackingPhotoTable.filepath AS jpg_filename
+                SELECT filename, TombstoneTable.filepath AS jpg_filename
                 FROM PhotoTable
-                LEFT OUTER JOIN BackingPhotoTable
-                ON BackingPhotoTable.id = PhotoTable.develop_camera_id
+                LEFT OUTER JOIN TombstoneTable
+                ON TombstoneTable.id = PhotoTable.develop_camera_id
                 WHERE event_id=?
                 UNION
                 SELECT filename, NULL AS jpg_filename
